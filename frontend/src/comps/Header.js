@@ -12,6 +12,7 @@ function Nav() {
             <li><Link to="/updateproduct">Update Products</Link></li>
             <li><Link to="/profile">Profile</Link></li>
             <li><Link to="/logout">LogOut</Link></li>
+            <li><Link to="/signup">Sign Up</Link></li>
         </ul>
         </div>
     </div>

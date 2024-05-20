@@ -7,6 +7,7 @@ import AddProducts from './comps/AddProducts';
 import UpdateProduct from './comps/UpdateProduct';
 import Profile from './comps/Profile';
 import Logout from './comps/Logout';
+import SignUp from './comps/SignUp';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
        <Route path='/updateproduct' element={<UpdateProduct/>}/>
        <Route path='/profile' element={<Profile/>}/>
        <Route path='/logout' element={<Logout/>}/>
+       <Route path='/signup' element={<SignUp/>}/>
     </Route>
   )
 )
