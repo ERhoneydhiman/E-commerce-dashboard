@@ -4,6 +4,7 @@ import { RouterProvider , createBrowserRouter, Route, createRoutesFromElements }
 import Layout from './comps/Layout';
 import Products from './comps/Products';
 import AddProducts from './comps/AddProducts';
+import UpdateProduct from './comps/UpdateProduct';
 import Profile from './comps/Profile';
 import Logout from './comps/Logout';
 
@@ -12,7 +13,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout />}>
        <Route path='' element={<Products/>}/>
        <Route path='/addproduct' element={<AddProducts/>}/>
-       <Route path='/updateproduct' element={<AddProducts/>}/>
+       <Route path='/updateproduct' element={<UpdateProduct/>}/>
        <Route path='/profile' element={<Profile/>}/>
        <Route path='/logout' element={<Logout/>}/>
     </Route>

@@ -32,3 +32,13 @@
 .nav ul li a {
   color: white;
 }
+
+
+.footer{
+  background-color: #0d2738;
+  color: white;
+
+  height: 10vh;
+  width: 100%;
+  text-align: center;
+}
