@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
     const [name, setName] = useState('');
@@ -7,6 +7,13 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [signupmsg, setSignupmsg] = useState()
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const auth = localStorage.getItem('user');
+        if (auth) {
+          navigate('/')
+        }
+      })
 
     const collectData = async () => {
         const user = { name, email, password };
@@ -29,8 +36,9 @@ function SignUp() {
             console.log(result);
             setSignupmsg('User Sign Up Done')
 
-            if(response){
+            if (response) {
                 navigate('/')
+                localStorage.setItem("user", JSON.stringify(result))
             }
 
         } catch (error) {
@@ -41,7 +49,8 @@ function SignUp() {
 
     return (
         <div className='signup'>
-            <h1>Register Here</h1>
+            <h1>E-Comm-Deshboard</h1>
+            <h1>Register to access website</h1>
             <div className='form'>
                 <input
                     required

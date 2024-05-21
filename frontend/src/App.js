@@ -8,17 +8,22 @@ import UpdateProduct from './comps/UpdateProduct';
 import Profile from './comps/Profile';
 import Logout from './comps/Logout';
 import SignUp from './comps/SignUp';
+import PrivateComp from './comps/PrivateComp';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
+    <Route element={<PrivateComp/>}>
     <Route path='/' element={<Layout />}>
        <Route path='' element={<Products/>}/>
        <Route path='/addproduct' element={<AddProducts/>}/>
        <Route path='/updateproduct' element={<UpdateProduct/>}/>
        <Route path='/profile' element={<Profile/>}/>
        <Route path='/logout' element={<Logout/>}/>
-       <Route path='/signup' element={<SignUp/>}/>
     </Route>
+    </Route>
+    <Route path='/signup' element={<SignUp/>}/>
+    </>
   )
 )
 function App() {
