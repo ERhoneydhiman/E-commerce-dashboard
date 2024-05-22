@@ -21,11 +21,14 @@ app.post('/login', async (req, res) => {
         if (user) {
             res.send(user)
         } else {
-            res.send("no user found")
+            res.send({ error: "no user found" })
         }
     } else {
-        res.send("no user found")
+        res.send({ error: "no user found" })
     }
 })
+
+
+
 
 app.listen(5000)
