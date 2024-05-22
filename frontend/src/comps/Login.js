@@ -1,10 +1,12 @@
-import React, { useState , useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useNavigate , Link } from 'react-router-dom';
 
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [signupmsg, setSignupmsg] = useState()
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,29 +18,35 @@ function Login() {
 
 
     const handleLogin = async () => {
-        console.log(email, password)
-        let result = await fetch('http://localhost:5000/login', {
-            method: 'post',
-            body: JSON.stringify({ email, password }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        result = await result.json();
-        console.log(result)
 
-        if (result.name) {
-            console.log('Login successful');
-            localStorage.setItem("user", JSON.stringify(result))
-            navigate('/')
+        if (email === "" || password === "") {
+            setSignupmsg("fill all input boxes")
         } else {
-            console.log('Login failed, showing alert');
-            alert('Enter correct details');
-            setEmail('')
-            setPassword('')
+            console.log(email, password)
+            let result = await fetch('http://localhost:5000/login', {
+                method: 'post',
+                body: JSON.stringify({ email, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            result = await result.json();
+            console.log(result)
+
+            if (result.name) {
+                console.log('Login successful');
+                localStorage.setItem("user", JSON.stringify(result))
+                navigate('/')
+            } else {
+                console.log('Login failed, showing alert');
+                alert('Enter correct details');
+                setEmail('')
+                setPassword('')
+            }
         }
+
     }
-    
+
     return (
         <div className='login'>
             <h1>E-Comm-Deshboard</h1>
@@ -63,8 +71,13 @@ function Login() {
                     placeholder='New Password'
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <p>{signupmsg}</p>
                 <button onClick={handleLogin} id='signup-btn'>Login</button>
 
+            </div>
+            <div id="login">
+                <p>New User ?? then</p>
+                <button id='login-btn' ><Link to="/signup">Sign Up</Link></button>
             </div>
         </div>
     )

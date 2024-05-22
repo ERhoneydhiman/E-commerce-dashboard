@@ -6,7 +6,7 @@ function PrivateComp() {
 
     return (
         
-        auth ? <Outlet /> : <Navigate to="/signup"/>
+        auth ? <Outlet /> : <Navigate to="/login"/>
         
     )
 }

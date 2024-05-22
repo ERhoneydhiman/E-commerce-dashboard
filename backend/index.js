@@ -10,6 +10,10 @@ app.use(cors())
 
 // signup API 
 app.post('/signup', async (req, res) => {
+    let existingUser  = await User.findOne(req.body)
+    if(existingUser ){
+        return res.send({ error: "Email already in use" });
+    }
     let user = new User(req.body);
     let result = await user.save();
     result = result.toObject()

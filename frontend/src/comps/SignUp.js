@@ -13,36 +13,37 @@ function SignUp() {
         if (auth) {
             navigate('/')
         }
-    })
+    },[navigate])
 
     const collectData = async () => {
-        const user = { name, email, password };
-        console.log(name, password, email);
 
-        try {
-            const response = await fetch('http://localhost:5000/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            });
+        if (name === "" || email === "" || password === "") {
+            setSignupmsg("fill all inputs")
+        } else {
+            const user = { name, email, password };
+            console.log(name, password, email);
 
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
+            try {
+                const response = await fetch('http://localhost:5000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                const result = await response.json();
+                console.log(result);
+                setSignupmsg('User Sign Up Done')
+
+                if (response) {
+                    navigate('/')
+                    localStorage.setItem("user", JSON.stringify(result))
+                }
+
+            } catch (error) {
+                console.error('Failed to fetch:', error);
             }
-
-            const result = await response.json();
-            console.log(result);
-            setSignupmsg('User Sign Up Done')
-
-            if (response) {
-                navigate('/')
-                localStorage.setItem("user", JSON.stringify(result))
-            }
-
-        } catch (error) {
-            console.error('Failed to fetch:', error);
         }
     };
 
