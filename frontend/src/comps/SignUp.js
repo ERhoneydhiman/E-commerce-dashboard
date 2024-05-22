@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function SignUp() {
     const [name, setName] = useState('');
@@ -11,9 +11,9 @@ function SignUp() {
     useEffect(() => {
         const auth = localStorage.getItem('user');
         if (auth) {
-          navigate('/')
+            navigate('/')
         }
-      })
+    })
 
     const collectData = async () => {
         const user = { name, email, password };
@@ -67,7 +67,7 @@ function SignUp() {
                     value={email}
                     className='input-box'
                     id='email'
-                    type="text"
+                    type="email"
                     placeholder='Enter Email'
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -84,6 +84,10 @@ function SignUp() {
 
                 <button onClick={collectData} id='signup-btn'>Sign Up</button>
                 <p>{signupmsg}</p>
+            </div>
+            <div id="login">
+                <p>Already account ?? then</p>
+                <button id='login-btn' ><Link to="/login">Login</Link></button>
             </div>
         </div>
     );

@@ -86,6 +86,44 @@
   color: white;
 }
 
+#login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-btn{
+  /* width: 40%; */
+  height: 5vh;
+  margin: 3vh 0;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: medium;
+  
+  background-color: white;
+  color: #0d2738;
+}
+#login-btn a {
+  color: #0d2738;
+  text-decoration: none;
+}
+
+.login{
+  width: 50%;
+  margin: 5vh auto;
+  background-color: #0d2738;
+  color: rgba(255, 255, 255, 0.908);
+  border: 2px solid #0d2738;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer {
   background-color: #0d2738;
   color: white;

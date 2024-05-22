@@ -9,6 +9,7 @@ import Profile from './comps/Profile';
 import Logout from './comps/Logout';
 import SignUp from './comps/SignUp';
 import PrivateComp from './comps/PrivateComp';
+import Login from './comps/Login';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,8 @@ const router = createBrowserRouter(
     </Route>
     </Route>
     <Route path='/signup' element={<SignUp/>}/>
+    <Route path='/login' element={<Login/>}/>
+
     </>
   )
 )
