@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 
+
+// signup API 
 app.post('/signup', async (req, res) => {
     let user = new User(req.body);
     let result = await user.save();
@@ -15,6 +17,8 @@ app.post('/signup', async (req, res) => {
     res.send(result)
 })
 
+
+// login API
 app.post('/login', async (req, res) => {
     if (req.body.password && req.body.email) {
         let user = await User.findOne(req.body).select("-password");
