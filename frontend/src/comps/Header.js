@@ -7,6 +7,8 @@ function Nav() {
     localStorage.clear();
     navigate('/signup')
   }
+  const auth = localStorage.getItem('user');
+
 
   return (
     <div className='header'>
@@ -17,7 +19,7 @@ function Nav() {
           <li><Link to="/addproduct">Add Products</Link></li>
           <li><Link to="/updateproduct">Update Products</Link></li>
           <li><Link to="/profile">Profile</Link></li>
-          <li><Link onClick={logout} to="/signup">LogOut</Link></li>
+          <li><Link onClick={logout} to="/signup">LogOut ({JSON.parse(auth).name})</Link></li>
         </ul>
       </div>
     </div>
