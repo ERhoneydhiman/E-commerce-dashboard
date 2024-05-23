@@ -5,8 +5,15 @@ function AddProduct() {
   const [price, setPrice] = useState("")
   const [category, setCategory] = useState('')
   const [company, setCompany] = useState('')
+  const [err, setErr] = useState(false)
 
   const handleAddProduct = async () => {
+
+    if(!name || !price || !category || !company){
+      setErr(true)
+      return false
+    }
+
     console.log(name, price, company, category)
     const userID = JSON.parse(localStorage.getItem('user'))._id
     console.log(userID)
@@ -34,7 +41,8 @@ function AddProduct() {
           onChange={(e) => {
             setName(e.target.value)
           }}
-        />
+        />{err && !name && <span>enter valid name</span>}
+
         <input value={price}
           className='input-box'
           type="text"
@@ -42,7 +50,8 @@ function AddProduct() {
           onChange={(e) => {
             setPrice(e.target.value)
           }}
-        />
+        />{err && !price && <span>enter valid price</span>}
+
         <input
           value={category}
           className='input-box'
@@ -51,7 +60,8 @@ function AddProduct() {
           onChange={(e) => {
             setCategory(e.target.value)
           }}
-        />
+        />{err && !category && <span>enter valid catagory</span>}
+
         <input
           t value={company}
           className='input-box'
@@ -60,7 +70,8 @@ function AddProduct() {
           onChange={(e) => {
             setCompany(e.target.value)
           }}
-        />
+        />{err && !company && <span>enter valid company</span>}
+
         <button onClick={handleAddProduct} id='add-product-btn' >Add Product</button>
       </div>
     </div>
