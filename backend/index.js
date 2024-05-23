@@ -38,13 +38,23 @@ app.post('/login', async (req, res) => {
     }
 })
 
-// product API
+// ADD product API
 app.post('/add-product', async (req, res)=>{
     let product = new Product(req.body);
     let result = await product.save();
     res.send(result)
 })
 
+// product list API
+app.get('/products',async (req, res)=>{
+    let products = await Product.find();
+    if(products.length > 0){
+        res.send(products)
+    }else{
+        res.send({result:"No Product Found"})
+    }
+
+})
 
 
 
