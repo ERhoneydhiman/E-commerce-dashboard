@@ -6,6 +6,7 @@ function AddProduct() {
   const [category, setCategory] = useState('')
   const [company, setCompany] = useState('')
   const [err, setErr] = useState(false)
+  const [donemsg, setDonemsg] = useState('')
 
   const handleAddProduct = async () => {
 
@@ -26,6 +27,11 @@ function AddProduct() {
     })
     result = await result.json()
     console.log(result)
+    setName('')
+    setCategory('')
+    setCompany('')
+    setPrice('')
+    setDonemsg("Product Added add new or see list on Products")
 
   }
 
@@ -74,6 +80,7 @@ function AddProduct() {
 
         <button onClick={handleAddProduct} id='add-product-btn' >Add Product</button>
       </div>
+      <p>{donemsg}</p>
     </div>
   )
 }
