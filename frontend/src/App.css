@@ -33,7 +33,8 @@
   color: white;
 }
 
-.signup , .add-product{
+.signup,
+.add-product {
   width: 50%;
   margin: 5vh auto;
   background-color: #0d2738;
@@ -73,7 +74,8 @@
 
 }
 
-#signup-btn, #add-product-btn  {
+#signup-btn,
+#add-product-btn {
   width: 40%;
   height: 5vh;
   margin: 3vh 0;
@@ -81,12 +83,12 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  
+
   background-color: #0d2738;
   color: white;
 }
 
-#login{
+#login {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,16 +103,17 @@
   border-radius: 20px;
   cursor: pointer;
   font-size: medium;
-  
+
   background-color: white;
   color: #0d2738;
 }
+
 #login-btn a {
   color: #0d2738;
   text-decoration: none;
 }
 
-.login{
+.login {
   width: 50%;
   margin: 5vh auto;
   background-color: #0d2738;
@@ -123,7 +126,43 @@
   align-items: center;
   justify-content: center;
 }
+.products-list{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.product-card {
+  background-color: #0d2738;
+  height: 32vh;
+  /* width: 30%; */
+  margin: 2vh 2vw;
+  padding: 3vh 3vw;
+  border-radius: 30px;
+  color: white;
+}
 
+#p-id {
+  text-align: right;
+}
+
+#p-name {
+  font-size: 3rem;
+  text-align: center;
+}
+.p-{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3vh 0;
+}
+.p-detail {
+  font-size: 1.2rem;
+  /* margin: 2vh 2vw; */
+}
+#p-price{
+  font-size: 2rem;
+  /* text-align: right; */
+
+}
 .footer {
   background-color: #0d2738;
   color: white;
