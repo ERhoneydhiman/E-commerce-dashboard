@@ -33,7 +33,7 @@
   color: white;
 }
 
-.signup {
+.signup , .add-product{
   width: 50%;
   margin: 5vh auto;
   background-color: #0d2738;
@@ -73,7 +73,7 @@
 
 }
 
-#signup-btn {
+#signup-btn, #add-product-btn  {
   width: 40%;
   height: 5vh;
   margin: 3vh 0;
@@ -92,7 +92,7 @@
   align-items: center;
 }
 
-#login-btn{
+#login-btn {
   /* width: 40%; */
   height: 5vh;
   margin: 3vh 0;
