@@ -56,6 +56,11 @@ app.get('/products',async (req, res)=>{
 
 })
 
+// delete API
+app.delete('/product/:id',async (req, res)=>{
+    const result =await Product.deleteOne({_id:req.params.id})
+    res.send(result)
+})
 
 
 app.listen(5000)

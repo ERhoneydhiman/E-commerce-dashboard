@@ -14,8 +14,12 @@ function ProductCard(props) {
                     </div>
                     <p id='p-price'>Rs {props.price}</p>
                 </div>
+                <div className="btns">
+                <button id='dlt-btn' onClick={props.deleteFun}>Delete Item</button>
+                <button id='update-btn' onClick={props.updateFun}>Update Item</button>
+                </div>
             </div>
-            
+
         </>
     )
 }

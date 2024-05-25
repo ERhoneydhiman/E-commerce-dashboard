@@ -14,7 +14,15 @@ function Products() {
     getProduct();
   }, []);
 
-  console.log(products);
+  const handleDelete = async (id)=>{
+    let result = await fetch(`http://localhost:5000/product/${id}`, {
+      method:'Delete'
+    })
+    result =await result.json()
+    if(result){
+      getProduct();
+    }
+  }
 
   return (
     <div className='products-list'>
@@ -26,7 +34,8 @@ function Products() {
             name={item.name}
             category={item.category}
             company={item.company}
-            price={item.price} />
+            price={item.price}
+            deleteFun={()=>handleDelete(item._id)} />
         ))
       }
     </div>
