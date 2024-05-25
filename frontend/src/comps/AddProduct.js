@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function AddProduct() {
   const [name, setName] = useState('')
@@ -7,10 +8,11 @@ function AddProduct() {
   const [company, setCompany] = useState('')
   const [err, setErr] = useState(false)
   const [donemsg, setDonemsg] = useState('')
+  const navigate = useNavigate();
 
   const handleAddProduct = async () => {
 
-    if(!name || !price || !category || !company){
+    if (!name || !price || !category || !company) {
       setErr(true)
       return false
     }
@@ -27,6 +29,7 @@ function AddProduct() {
     })
     result = await result.json()
     console.log(result)
+    navigate('/')
     setName('')
     setCategory('')
     setCompany('')

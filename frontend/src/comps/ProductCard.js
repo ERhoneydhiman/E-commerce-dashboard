@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 
 function ProductCard(props) {
     return (
@@ -10,13 +12,14 @@ function ProductCard(props) {
                 <div className="p-">
                     <div className="p-detail">
                         <p >Company: {props.company}</p>
-                        <p >Category: {props.catagory}</p>
+                        <p >Category: {props.category}</p>
                     </div>
                     <p id='p-price'>Rs {props.price}</p>
                 </div>
                 <div className="btns">
                 <button id='dlt-btn' onClick={props.deleteFun}>Delete Item</button>
-                <button id='update-btn' onClick={props.updateFun}>Update Item</button>
+                <button><Link to={`/updateproduct/${props.id}`}>Update Item</Link></button>
+                
                 </div>
             </div>
 

@@ -35,7 +35,8 @@ function Products() {
             category={item.category}
             company={item.company}
             price={item.price}
-            deleteFun={()=>handleDelete(item._id)} />
+            deleteFun={()=>handleDelete(item._id)} 
+            />
         ))
       }
     </div>
