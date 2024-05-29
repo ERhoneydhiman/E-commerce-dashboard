@@ -130,9 +130,10 @@
   display: grid;
   grid-template-columns: auto auto auto;
 }
+
 .product-card {
   background-color: #0d2738;
-  height: 32vh;
+  /* height: 32vh; */
   /* width: 30%; */
   margin: 2vh 2vw;
   padding: 3vh 3vw;

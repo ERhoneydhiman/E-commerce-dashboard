@@ -12,8 +12,8 @@ app.use(cors())
 
 // signup API 
 app.post('/signup', async (req, res) => {
-    let existingUser  = await User.findOne(req.body)
-    if(existingUser ){
+    let existingUser = await User.findOne(req.body)
+    if (existingUser) {
         return res.send({ error: "Email already in use" });
     }
     let user = new User(req.body);
@@ -39,47 +39,60 @@ app.post('/login', async (req, res) => {
 })
 
 // ADD product API
-app.post('/add-product', async (req, res)=>{
+app.post('/add-product', async (req, res) => {
     let product = new Product(req.body);
     let result = await product.save();
     res.send(result)
 })
 
 // product list API
-app.get('/products',async (req, res)=>{
+app.get('/products', async (req, res) => {
     let products = await Product.find();
-    if(products.length > 0){
+    if (products.length > 0) {
         res.send(products)
-    }else{
-        res.send({result:"No Product Found"})
+    } else {
+        res.send({ result: "No Product Found" })
     }
 
 })
 
 // delete API
-app.delete('/product/:id',async (req, res)=>{
-    const result =await Product.deleteOne({_id:req.params.id})
+app.delete('/product/:id', async (req, res) => {
+    const result = await Product.deleteOne({ _id: req.params.id })
     res.send(result)
 })
 
 // update API
-app.get('/product/:id', async (req, res)=>{
-    const result = await Product.findById({_id:req.params.id})
+app.get('/product/:id', async (req, res) => {
+    const result = await Product.findById({ _id: req.params.id })
 
-    if(result){
-    res.send(result)
-    }else{
-        res.send({result: "No record found"})
+    if (result) {
+        res.send(result)
+    } else {
+        res.send({ result: "No record found" })
 
     }
 })
 
-app.put('/product/:id', async(req, res)=>{
+app.put('/product/:id', async (req, res) => {
     const result = await Product.updateOne(
-        {_id:req.params.id},{
-            $set:req.body
-        }
+        { _id: req.params.id }, {
+        $set: req.body
+    }
     )
+    res.send(result)
+})
+
+//search API
+app.get('/search/:key', async (req, res) => {
+    let result = await Product.find({
+        '$or': [
+            { name: { $regex: req.params.key } },
+            { company: { $regex: req.params.key } },
+            { category: { $regex: req.params.key } }
+
+        ]
+    })
     res.send(result)
 })
 
