@@ -1,91 +1,98 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState("")
-  const [category, setCategory] = useState('')
-  const [company, setCompany] = useState('')
-  const [err, setErr] = useState(false)
-  const [donemsg, setDonemsg] = useState('')
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [company, setCompany] = useState("");
+  const [err, setErr] = useState(false);
+  const [donemsg, setDonemsg] = useState("");
   const navigate = useNavigate();
 
   const handleAddProduct = async () => {
-
     if (!name || !price || !category || !company) {
-      setErr(true)
-      return false
+      setErr(true);
+      return false;
     }
 
-    console.log(name, price, company, category)
-    const userID = JSON.parse(localStorage.getItem('user'))._id
-    console.log(userID)
-    let result = await fetch('http://localhost:5000/add-product', {
-      method: 'post',
+    console.log(name, price, company, category);
+    const userID = JSON.parse(localStorage.getItem("user"))._id;
+    console.log(userID);
+    let result = await fetch("http://localhost:5000/add-product", {
+      method: "post",
       body: JSON.stringify({ name, price, category, company, userID }),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    result = await result.json()
-    console.log(result)
-    navigate('/')
-    setName('')
-    setCategory('')
-    setCompany('')
-    setPrice('')
-    setDonemsg("Product Added add new or see list on Products")
-
-  }
+        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    console.log(result);
+    navigate("/");
+    setName("");
+    setCategory("");
+    setCompany("");
+    setPrice("");
+    setDonemsg("Product Added add new or see list on Products");
+  };
 
   return (
-    <div className='add-product'>
+    <div className="add-product">
       <h1>Add Product</h1>
       <div className="form">
         <input
           value={name}
-          className='input-box'
+          className="input-box"
           type="text"
-          placeholder='Product Name'
+          placeholder="Product Name"
           onChange={(e) => {
-            setName(e.target.value)
+            setName(e.target.value);
           }}
-        />{err && !name && <span>enter valid name</span>}
+        />
+        {err && !name && <span>enter valid name</span>}
 
-        <input value={price}
-          className='input-box'
+        <input
+          value={price}
+          className="input-box"
           type="text"
-          placeholder='Product Price'
+          placeholder="Product Price"
           onChange={(e) => {
-            setPrice(e.target.value)
+            setPrice(e.target.value);
           }}
-        />{err && !price && <span>enter valid price</span>}
+        />
+        {err && !price && <span>enter valid price</span>}
 
         <input
           value={category}
-          className='input-box'
+          className="input-box"
           type="text"
-          placeholder='Product Category'
+          placeholder="Product Category"
           onChange={(e) => {
-            setCategory(e.target.value)
+            setCategory(e.target.value);
           }}
-        />{err && !category && <span>enter valid catagory</span>}
+        />
+        {err && !category && <span>enter valid catagory</span>}
 
         <input
-          t value={company}
-          className='input-box'
+          t
+          value={company}
+          className="input-box"
           type="text"
-          placeholder='Product Company'
+          placeholder="Product Company"
           onChange={(e) => {
-            setCompany(e.target.value)
+            setCompany(e.target.value);
           }}
-        />{err && !company && <span>enter valid company</span>}
+        />
+        {err && !company && <span>enter valid company</span>}
 
-        <button onClick={handleAddProduct} id='add-product-btn' >Add Product</button>
+        <button onClick={handleAddProduct} id="add-product-btn">
+          Add Product
+        </button>
       </div>
       <p>{donemsg}</p>
     </div>
-  )
+  );
 }
 
-export default AddProduct
+export default AddProduct;
