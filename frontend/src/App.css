@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+a {
+  color: white;
+  text-decoration: none;
+}
 
 .header {
   width: 100%;
@@ -55,8 +59,6 @@
   border-radius: 30px;
   margin: 5vh 0;
 
-
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +73,6 @@
   border-radius: 20px;
   background-color: #dfdfdf;
   color: rgb(0, 0, 0);
-
 }
 
 #signup-btn,
@@ -126,7 +127,7 @@
   align-items: center;
   justify-content: center;
 }
-.products-list{
+.products-list {
   display: grid;
   grid-template-columns: auto auto auto;
 }
@@ -149,7 +150,7 @@
   font-size: 3rem;
   text-align: center;
 }
-.p-{
+.p- {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -159,10 +160,77 @@
   font-size: 1.2rem;
   /* margin: 2vh 2vw; */
 }
-#p-price{
+#p-price {
   font-size: 2rem;
   /* text-align: right; */
+}
 
+.profile {
+  min-height: 100vh;
+}
+.user-info {
+  width: 40%;
+  height: 30vh;
+  background-color: #0d2738;
+  color: white;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.product-info {
+  padding: 4vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.added-products-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 3vh 0 0 0;
+}
+
+.added-products-table th {
+  border: 1px solid #ddd;
+  padding: 2vh 1vw;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.added-products-table td {
+  border: 1px solid #ddd;
+  padding: 1vh 1vw;
+}
+
+/* Alternating row colors */
+.added-products-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect for table rows */
+.added-products-table tr:hover {
+  background-color: #ddd;
+}
+
+.added-products-table tbody tr td[colspan="5"] {
+  text-align: center;
+  font-weight: bold;
+  padding: 5vh 0;
+}
+
+.product-info .btns {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+.product-info .btns button {
+  padding: 1vh 1vw;
+  border: none;
+  border-radius: 20px;
+  background-color: #0d2738;
+  color: white;
 }
 .footer {
   background-color: #0d2738;

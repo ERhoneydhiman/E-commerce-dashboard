@@ -10,37 +10,47 @@ function UpdateProduct() {
   const navigate = useNavigate();
 
   const getProduct = async () => {
-    let result = await fetch(`http://localhost:5000/product/${params.id}`, {
-      headers: {
-        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-      },
-    });
-    result = await result.json();
-    console.log(result);
-    setName(result.name);
-    setCategory(result.category);
-    setPrice(result.price);
-    setCompany(result.company);
+    try {
+      // Added
+      let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+        headers: {
+          Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      });
+      result = await result.json();
+      setName(result.name);
+      setCategory(result.category);
+      setPrice(result.price);
+      setCompany(result.company);
+    } catch (error) {
+      // Added
+      console.error("Error fetching product data:", error); // Added
+    }
   };
+
   useEffect(() => {
-    console.log(params);
     getProduct();
-  }, []);
+  }, [params.id]); // Changed
 
   const handleUpdateProduct = async () => {
-    console.log(name, price, category, company);
-    let result = await fetch(`http://localhost:5000/product/${params.id}`, {
-      method: "put",
-      body: JSON.stringify({ name, price, category, company }),
-      headers: {
-        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result.json();
-    console.log(result);
-    navigate("/");
+    try {
+      // Added
+      let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ name, price, category, company }),
+        headers: {
+          Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          "Content-Type": "application/json",
+        },
+      });
+      result = await result.json();
+      navigate("/");
+    } catch (error) {
+      // Added
+      console.error("Error updating product:", error); // Added
+    }
   };
+
   return (
     <div className="add-product">
       <h1>Update Product</h1>
@@ -50,44 +60,33 @@ function UpdateProduct() {
           className="input-box"
           type="text"
           placeholder="Product Name"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           value={price}
           className="input-box"
           type="text"
           placeholder="Product Price"
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
+          onChange={(e) => setPrice(e.target.value)}
         />
         <input
           value={category}
           className="input-box"
           type="text"
           placeholder="Product Category"
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
+          onChange={(e) => setCategory(e.target.value)}
         />
-
         <input
           value={company}
           className="input-box"
           type="text"
           placeholder="Product Company"
-          onChange={(e) => {
-            setCompany(e.target.value);
-          }}
+          onChange={(e) => setCompany(e.target.value)}
         />
-
         <button onClick={handleUpdateProduct} id="add-product-btn">
-          update Product
+          Update Product
         </button>
       </div>
-      <p>{}</p>
     </div>
   );
 }
