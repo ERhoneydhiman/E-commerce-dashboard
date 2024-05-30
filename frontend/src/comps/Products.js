@@ -18,19 +18,6 @@ function Products() {
     getProduct();
   }, []);
 
-  const handleDelete = async (id) => {
-    let result = await fetch(`http://localhost:5000/product/${id}`, {
-      method: "Delete",
-      headers: {
-        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-      },
-    });
-    result = await result.json();
-    if (result) {
-      getProduct();
-    }
-  };
-
   const handleSearch = async (e) => {
     console.log(e.target.value);
     let key = e.target.value;
@@ -64,7 +51,6 @@ function Products() {
               category={item.category}
               company={item.company}
               price={item.price}
-              deleteFun={() => handleDelete(item._id)}
             />
           ))
         ) : (
