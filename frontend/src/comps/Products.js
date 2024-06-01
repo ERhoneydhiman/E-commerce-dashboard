@@ -54,8 +54,8 @@ function Products() {
               <p id="s-name">{selectedProduct.name}</p>
               <p id="s-cate">Category: {selectedProduct.category}</p>
               <p id="s-com">Brand: {selectedProduct.company}</p>
-              <p id="s-price">Price: ${selectedProduct.price}</p>
               <p id="s-id"> Product ID: {selectedProduct._id}</p>
+              <p id="s-price">Price: ${selectedProduct.price}</p>
             </div>
           ) : (
             <h2>Select a product to see details</h2>

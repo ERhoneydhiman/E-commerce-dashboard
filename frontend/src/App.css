@@ -209,6 +209,7 @@ a {
   height: 90vh;
   margin: 0 3vw 0 0;
   background-color: #e9d04385;
+  border-radius: 0 189px 0 0;
 }
 .selected-item {
   /* background-color: red; */
@@ -239,7 +240,7 @@ a {
   background-color: #32b9d7;
   border-radius: 50px;
   text-align: center;
-  margin: 10vh 0 20vh 0;
+  margin: 10vh 0 15vh 0;
 }
 .products-list {
   height: 90vh;
@@ -362,15 +363,82 @@ a {
 .footer {
   background-color: #0d2738;
   color: white;
-
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
-  text-align: center;
 }
+hr {
+  margin: 0 20vw;
+}
+.footer-one {
+  background-color: #0d2738;
+  color: white;
 
+  min-height: 10vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10vw;
+}
+.somthing {
+  max-width: 50%;
+  height: 30vh;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0 60px 0 0;
+  margin: 6vh 2vw;
+  padding: 3vh 2vw;
+}
+#some-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 3vh 0;
+}
+#some-msg {
+  font-size: 1.2rem;
+}
+.contect {
+  width: 50%;
+  display: flex;
+  align-items: first baseline;
+  flex-direction: column;
+}
+#contect-heading {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.contect table {
+  width: 100%;
+  margin: 3vh 0 0 0;
+  border-collapse: collapse;
+}
+.contect th {
+  padding: 2vh 0;
+  text-align: left;
+}
+.contect td {
+  padding: 2vh 0;
+  text-align: left;
+}
+.social ul {
+  margin: 3vh 0 0 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+.contect li {
+  list-style-type: none;
+}
+/* scroll bar */
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
+}
+.copy {
+  text-align: center;
+  padding: 5vh 0;
+  font-size: 1.1rem;
 }
 /* Track */
 ::-webkit-scrollbar-track {

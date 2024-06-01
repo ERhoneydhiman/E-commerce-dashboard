@@ -18,7 +18,7 @@ function Nav() {
   return (
     <>
       <div className="header">
-        <h1>E-Deshboard</h1>
+        <h1>E-Commerce Deshboard</h1>
         <div className="nav">
           <ul>
             <li>
