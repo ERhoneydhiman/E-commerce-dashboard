@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const getProduct = async () => {
     let result = await fetch("http://localhost:5000/products", {
@@ -36,26 +37,49 @@ function Products() {
     }
   };
 
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <>
       <div className="search">
         <input onChange={handleSearch} type="text" placeholder="search..." />
       </div>
-      <div className="products-list">
-        {products.length > 0 ? (
-          products.map((item) => (
-            <ProductCard
-              key={item._id}
-              id={item._id}
-              name={item.name}
-              category={item.category}
-              company={item.company}
-              price={item.price}
-            />
-          ))
-        ) : (
-          <h1>no result </h1>
-        )}
+
+      <div className="container">
+        <div className="one-item">
+          {selectedProduct ? (
+            <div className="selected-item">
+              <p id="s-name">{selectedProduct.name}</p>
+              <p id="s-cate">Category: {selectedProduct.category}</p>
+              <p id="s-com">Brand: {selectedProduct.company}</p>
+              <p id="s-price">Price: ${selectedProduct.price}</p>
+              <p id="s-id"> Product ID: {selectedProduct._id}</p>
+            </div>
+          ) : (
+            <h2>Select a product to see details</h2>
+          )}
+        </div>
+
+        <div className="products-list">
+          {products.length > 0 ? (
+            products.map((item, index) => (
+              <div key={item._id} onClick={() => handleProductClick(item)}>
+                <ProductCard
+                  index={index + 1}
+                  // id={item._id}
+                  name={item.name}
+                  category={item.category}
+                  // company={item.company}
+                  // price={index + 1}
+                />
+              </div>
+            ))
+          ) : (
+            <h1>No results</h1>
+          )}
+        </div>
       </div>
     </>
   );
