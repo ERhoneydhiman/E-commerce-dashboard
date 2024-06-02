@@ -197,7 +197,15 @@ a {
   align-items: center;
   justify-content: center;
 }
-
+.expired h1 {
+  text-align: center;
+}
+.lottie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .container {
   /* background-color: red; */
   display: grid;
@@ -219,14 +227,30 @@ a {
   padding: 5% 5%;
   color: #052c46;
 }
+.selected-item #img {
+  width: 90%;
+  height: 40%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7994780;
+  border-radius: 20px;
+}
+#img img {
+  width: auto;
+  height: 99%;
+}
+.s- {
+  margin: 2vh 0;
+}
 #s-name {
   font-size: 3rem;
   text-transform: uppercase;
-  margin: 5vh 0;
-  /* background-color: #32b9d7; */
+  margin: 2vh 0;
   color: #052c46;
   border-radius: 50px;
-  text-align: center;
+  text-align: left;
   padding: 10px 10px;
   font-weight: 800;
 }
