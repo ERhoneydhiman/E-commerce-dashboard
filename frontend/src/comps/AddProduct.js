@@ -9,6 +9,7 @@ function AddProduct() {
   const [err, setErr] = useState(false);
   const [donemsg, setDonemsg] = useState("");
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleAddProduct = async () => {
     if (!name || !price || !category || !company) {
@@ -19,7 +20,7 @@ function AddProduct() {
     console.log(name, price, company, category);
     const userID = JSON.parse(localStorage.getItem("user"))._id;
     console.log(userID);
-    let result = await fetch("http://localhost:5000/add-product", {
+    let result = await fetch(`${API_URL}/add-product`, {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userID }),
       headers: {

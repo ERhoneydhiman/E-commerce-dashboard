@@ -8,6 +8,8 @@ function Profile() {
 
   const navigate = useNavigate();
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const logout = () => {
     localStorage.clear();
     navigate("/signup");
@@ -16,7 +18,7 @@ function Profile() {
   const getProduct = async () => {
     try {
       // Added
-      let result = await fetch("http://localhost:5000/products", {
+      let result = await fetch(`${API_URL}/products`, {
         headers: {
           Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },

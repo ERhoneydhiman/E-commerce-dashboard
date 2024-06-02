@@ -4,9 +4,10 @@ import ProductCard from "./ProductCard";
 function Products() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getProduct = async () => {
-    let result = await fetch("http://localhost:5000/products", {
+    let result = await fetch(`${API_URL}/products`, {
       headers: {
         Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
@@ -23,7 +24,7 @@ function Products() {
     console.log(e.target.value);
     let key = e.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`, {
+      let result = await fetch(`${API_URL}/search/${key}`, {
         headers: {
           Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },

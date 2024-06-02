@@ -8,6 +8,7 @@ function SignUp() {
   const [signupmsg, setSignupmsg] = useState();
   const navigate = useNavigate();
 
+  const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
@@ -23,7 +24,7 @@ function SignUp() {
       console.log(name, password, email);
 
       try {
-        const response = await fetch("http://localhost:5000/signup", {
+        const response = await fetch(`${API_URL}/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

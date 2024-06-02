@@ -5,6 +5,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signupmsg, setSignupmsg] = useState();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ function Login() {
       setSignupmsg("fill all input boxes");
     } else {
       console.log(email, password);
-      let result = await fetch("http://localhost:5000/login", {
+      let result = await fetch(`${API_URL}/login`, {
         method: "post",
         body: JSON.stringify({ email, password }),
         headers: {
