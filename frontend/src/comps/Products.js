@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Lottie from "lottie-react";
+import animation from "./Lottie/login-again.json";
+import chooseAnime from "./Lottie/choose-anime.json";
 import ProductCard from "./ProductCard";
 
 function Products() {
@@ -14,6 +17,7 @@ function Products() {
     });
     result = await result.json();
     setProducts(result);
+    console.log(result);
   };
 
   useEffect(() => {
@@ -39,6 +43,14 @@ function Products() {
   };
 
   const handleProductClick = (product) => {
+    if (
+      product.image &&
+      product.image.contentType &&
+      product.image.imageBase64
+    ) {
+      const imageUrl = `data:${product.image.contentType};base64,${product.image.imageBase64}`;
+      product.image = imageUrl;
+    }
     setSelectedProduct(product);
   };
 
@@ -53,13 +65,22 @@ function Products() {
           {selectedProduct ? (
             <div className="selected-item">
               <p id="s-name">{selectedProduct.name}</p>
-              <p id="s-cate">Category: {selectedProduct.category}</p>
-              <p id="s-com">Brand: {selectedProduct.company}</p>
-              <p id="s-id"> Product ID: {selectedProduct._id}</p>
+              <div id="img">
+                <img src={selectedProduct.image} alt="Selected Product" />
+              </div>
+
+              <div className="s-">
+                <p id="s-cate">Category: {selectedProduct.category}</p>
+                <p id="s-com">Brand: {selectedProduct.company}</p>
+                <p id="s-id"> Product ID: {selectedProduct._id}</p>
+              </div>
               <p id="s-price">Price: ${selectedProduct.price}</p>
             </div>
           ) : (
-            <h2>Select a product to see details</h2>
+            <div className="lottie">
+              <Lottie animationData={chooseAnime} />
+              <h1>Select Item From List..</h1>
+            </div>
           )}
         </div>
 
@@ -72,13 +93,17 @@ function Products() {
                   // id={item._id}
                   name={item.name}
                   category={item.category}
-                  // company={item.company}
-                  // price={index + 1}
                 />
               </div>
             ))
           ) : (
-            <h1>No results</h1>
+            <div className="expired">
+              <h1>Token Expired || Login Again...</h1>
+              <div className="lottie">
+                <Lottie animationData={animation} />
+              </div>
+              <h1>OR List is empty</h1>
+            </div>
           )}
         </div>
       </div>

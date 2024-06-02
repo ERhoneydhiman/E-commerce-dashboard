@@ -5,7 +5,6 @@ function AddedItem(props) {
   return (
     <tr className="added-item">
       <td id="a-name">{props.name}</td>
-      {/* <td id="a-id">{props.id}</td> */}
       <td> {props.category}</td>
       <td> {props.company}</td>
       <td id="a-price"> {props.price}</td>

@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const multer = require("multer");
 require("./db/config");
 const User = require("./db/User");
 const Product = require("./db/Product");
@@ -9,6 +10,10 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+// Set up Multer storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 // signup API
 app.post("/signup", async (req, res) => {
@@ -47,12 +52,39 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// ADD product API
-app.post("/add-product", verifyToken, async (req, res) => {
-  let product = new Product(req.body);
-  let result = await product.save();
-  res.send(result);
-});
+// ADD product API with image upload
+app.post(
+  "/add-product",
+  verifyToken,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { name, price, category, company, userID } = req.body;
+
+      if (!req.file) {
+        return res.status(400).send({ error: "Image file is required." });
+      }
+
+      const newProduct = new Product({
+        name,
+        price,
+        category,
+        company,
+        userID,
+        image: {
+          filename: req.file.originalname,
+          contentType: req.file.mimetype,
+          imageBase64: req.file.buffer.toString("base64"),
+        },
+      });
+
+      let result = await newProduct.save();
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  }
+);
 
 // product list API
 app.get("/products", verifyToken, async (req, res) => {

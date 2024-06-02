@@ -121,7 +121,9 @@ function Profile() {
               ))
             ) : (
               <tr>
-                <td colSpan="5">No results</td>
+                <td colSpan="5">
+                  Add Product OR Token Expired || Login Again...
+                </td>
               </tr>
             )}
           </tbody>

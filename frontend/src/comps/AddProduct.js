@@ -7,25 +7,33 @@ function AddProduct() {
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
   const [err, setErr] = useState(false);
+  const [image, setImage] = useState(null);
   const [donemsg, setDonemsg] = useState("");
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
 
   const handleAddProduct = async () => {
-    if (!name || !price || !category || !company) {
+    if (!name || !price || !category || !company || !image) {
       setErr(true);
       return false;
     }
 
-    console.log(name, price, company, category);
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("company", company);
+    formData.append("userID", JSON.parse(localStorage.getItem("user"))._id);
+    formData.append("image", image);
+
+    console.log(name, price, company, category, image);
     const userID = JSON.parse(localStorage.getItem("user"))._id;
     console.log(userID);
     let result = await fetch(`${API_URL}/add-product`, {
       method: "post",
-      body: JSON.stringify({ name, price, category, company, userID }),
+      body: formData,
       headers: {
         Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        "Content-Type": "application/json",
       },
     });
     result = await result.json();
@@ -35,6 +43,7 @@ function AddProduct() {
     setCategory("");
     setCompany("");
     setPrice("");
+    setImage(null);
     setDonemsg("Product Added add new or see list on Products");
   };
 
@@ -86,6 +95,12 @@ function AddProduct() {
           }}
         />
         {err && !company && <span>enter valid company</span>}
+        <input
+          type="file"
+          className="input-box"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+        {err && !image && <span>Upload an image</span>}
 
         <button onClick={handleAddProduct} id="add-product-btn">
           Add Product
