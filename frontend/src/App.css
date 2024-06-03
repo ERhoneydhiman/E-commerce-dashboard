@@ -55,12 +55,13 @@ a {
 }
 
 .sidebar {
-  width: 100%;
+  width: 100vw;
   background-color: rgba(255, 255, 255, 0.973);
-  height: 80vh;
+  height: 100vh;
   position: fixed;
   top: 20vh;
   font-size: 2rem;
+  z-index: 999;
 
   transition: transform 0.3s ease;
   transform: translateX(105%);
@@ -69,7 +70,7 @@ a {
   color: #0d2738;
 }
 .show {
-  transform: translateX(30%);
+  transform: translateX(20%);
 }
 .side {
   height: 80%;
@@ -320,7 +321,7 @@ a {
   text-transform: uppercase;
 }
 .product-info {
-  padding: 4vh 0;
+  padding: 04vh 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -485,7 +486,10 @@ hr {
   #sidebar-btn {
     display: block;
   }
-
+  .header h1 {
+    padding: 1vh;
+    font-size: 3rem;
+  }
   .nav {
     display: none;
   }
@@ -496,5 +500,43 @@ hr {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+  .footer-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10vw;
+  }
+  .somthing {
+    max-width: 100%;
+    height: auto;
+  }
+  .contect {
+    width: 100%;
+    align-items: center;
+  }
+  .contect table {
+    width: 90%;
+    margin: 3vh 2vw;
+    border-collapse: collapse;
+  }
+  .social ul {
+    margin: 3vh 0;
+  }
+  .product-info .btns {
+    flex-direction: column-reverse;
+    padding: 1vh 2vw;
+  }
+  .added-products-table {
+    width: 98%;
+  }
+  .user-info table {
+    width: 98%;
+  }
+  .add-product,
+  .signup,
+  .login {
+    width: 98%;
   }
 }

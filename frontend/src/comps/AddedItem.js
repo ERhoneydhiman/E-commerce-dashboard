@@ -10,10 +10,10 @@ function AddedItem(props) {
       <td id="a-price"> {props.price}</td>
       <td className="btns">
         <button id="dlt-btn" onClick={props.deleteFun}>
-          Delete Item
+          Delete
         </button>
         <button>
-          <Link to={`/updateproduct/${props.id}`}>Update Item</Link>
+          <Link to={`/updateproduct/${props.id}`}>Update</Link>
         </button>
       </td>
     </tr>
