@@ -74,7 +74,7 @@ function Products() {
                 <p id="s-com">Brand: {selectedProduct.company}</p>
                 <p id="s-id"> Product ID: {selectedProduct._id}</p>
               </div>
-              <p id="s-price">Price: ${selectedProduct.price}</p>
+              <p id="s-price">Price: Rs. {selectedProduct.price}</p>
             </div>
           ) : (
             <div className="lottie">

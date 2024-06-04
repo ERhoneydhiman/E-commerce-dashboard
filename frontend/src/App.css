@@ -224,8 +224,8 @@ a {
   /* background-color: red; */
   width: 80%;
   height: 80%;
-  margin: 5% auto;
-  padding: 5% 5%;
+  margin: 3vh auto;
+  padding: 3vh 3vw;
   color: #052c46;
 }
 .selected-item #img {
@@ -248,11 +248,11 @@ a {
 #s-name {
   font-size: 3rem;
   text-transform: uppercase;
-  margin: 2vh 0;
+  margin: 0vh 0;
   color: #052c46;
   border-radius: 50px;
   text-align: left;
-  padding: 10px 10px;
+  padding: 1vh 1vw;
   font-weight: 800;
 }
 #s-cate,
@@ -265,7 +265,7 @@ a {
   background-color: #32b9d7;
   border-radius: 50px;
   text-align: center;
-  margin: 10vh 0 15vh 0;
+  margin: 7vh 0 15vh 0;
 }
 .products-list {
   height: 90vh;
