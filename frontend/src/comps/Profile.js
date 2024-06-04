@@ -12,7 +12,7 @@ function Profile() {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/signup");
+    navigate("/login");
   };
 
   const getProduct = async () => {
